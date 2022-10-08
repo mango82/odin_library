@@ -10,21 +10,19 @@ const theMartian = new Book("The Martian", "Jeremey", 124,"Read")
 let myLibrary = [theHobbit, theMartian];
     //empty array to add books to
 
-const div = document.getElementById("div")
-book = document.createElement("p")
-
+book = document.createElement("div")
+book.classList.add("card-container")
 const refresh = document.getElementById("refresh")
+
 refresh.addEventListener("click", function(){
-    book.innerHTML = ""
-    for (let i = 0; i < myLibrary.length; i++){
-    let myArray = Object.values(myLibrary[i])
-    book.innerHTML += "<br>" + myArray
-    div.appendChild(book)
-    }
+    refreshLibrary()
 })
 
-console.log(addBookToLibrary())
-console.log(myLibrary)
+const newBook = document.getElementById("new-book")
+newBook.addEventListener("click", function(){
+    addBookToLibrary()
+})
+
 
 function addBookToLibrary(){
     //gets user prompt and adds book to array
@@ -34,12 +32,28 @@ function addBookToLibrary(){
         prompt("Pages:"),
         prompt("Read:"),
     )
-    console.log(newBook)
     myLibrary.push(newBook)
-    console.log(myLibrary)
+    refreshLibrary()
+
     //add button to remove book from array
 }
-
+const deleteButton = document.getElementsByClassName("delete-button")
+const library = document.getElementById("library")
+const button = document.createElement("button")
+function refreshLibrary(){
+    library.innerHTML = ""
+    for (let i = 0; i < myLibrary.length; i++){
+        let myArray = Object.values(myLibrary[i]) 
+        book.innerHTML = "<div class='book-info'>" + myArray + "</div>" + "<button class='delete-button'>Delete</button>"
+        library.appendChild(book.cloneNode(book))
+    }
+    library.addEventListener("click", e =>{
+        if(e.target.classList.contains("delete-button")){
+            e.target.closest("div").remove()
+        }
+    })
+    
+}
 
 
 
