@@ -39,22 +39,30 @@ function addBookToLibrary(){
 }
 const deleteButton = document.getElementsByClassName("delete-button")
 const library = document.getElementById("library")
-const button = document.createElement("button")
+
 function refreshLibrary(){
     library.innerHTML = ""
-    for (let i = 0; i < myLibrary.length; i++){
-        let myArray = Object.values(myLibrary[i]) 
-        book.innerHTML = "<div class='book-info'>" + myArray + "</div>" + "<button class='delete-button'>Delete</button>"
-        library.appendChild(book.cloneNode(book))
-    }
-    library.addEventListener("click", e =>{
-        if(e.target.classList.contains("delete-button")){
-            e.target.closest("div").remove()
-        }
-    })
-    
+    addLibrary()
+    removeLibrary()   
 }
-
+function addLibrary(){
+    for (let i = 0; i < myLibrary.length; i++){
+            let myArray = Object.values(myLibrary[i]) 
+            book.innerHTML = "<div class='book-info'>" + myArray + "</div>" + "<button class='delete-button' data-id=" + [i] + ">Delete</button>"
+            library.appendChild(book.cloneNode(book))
+        }
+}
+function removeLibrary(){
+    let button = document.getElementsByClassName("delete-button")
+    for (let i = 0; i < myLibrary.length; i++){
+        button[i].addEventListener("click", e =>{
+            book.setAttribute("data-index", "" +[i]+ "")
+            let index = book.dataset.index
+            myLibrary.splice(index, 1)
+            e.target.parentNode.remove()
+            })
+        }
+}
 
 
 // let theHobbit = new Book("The Hobbit", "J.R.R Tolkein", "255 pages", "Not read")
