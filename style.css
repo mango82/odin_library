@@ -1,7 +1,21 @@
+header {
+    text-align: center;
+    border: solid;
+}
+#library-header {
+    text-align: center;
+}
+#button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
 #library {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 10px;
     grid-auto-rows: auto;
+    border: solid;
 }
 .card-container {
     display: flex;
