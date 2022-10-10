@@ -1,17 +1,14 @@
 #library {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: auto;
 }
 .card-container {
-    border: solid;
     display: flex;
     flex-direction: column;
+    border: solid;
     padding: 10px;
     gap: 5px;
     margin: 5px;
-}
-.form-container {
-    display: flex;
-    flex-direction: column;
     align-items: flex-start;
 }
