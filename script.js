@@ -4,8 +4,8 @@ function Book(title, author, pages, read){
     this.pages = pages
     this.read = read
 }
-const theHobbit = new Book("The Hobbit", "JRR Tolkien", 242,"Not Read")
-const theMartian = new Book("The Martian", "Jeremey", 124,"Read")
+const theHobbit = new Book("The Hobbit", "JRR Tolkien", 242, true)
+const theMartian = new Book("The Martian", "Jeremey", 124, false)
 
 let myLibrary = [theHobbit, theMartian];
     //empty array to add books to
@@ -45,10 +45,29 @@ function refreshLibrary(){
     addLibrary()
     removeLibrary()   
 }
+
+const statusButton = document.getElementsByClassName("status-box")
+function updateReadStatus(){
+    for (let i = 0; i < myLibrary.length; i++){
+        if(statusButton[i].checked === true){
+            myLibrary[i].read = true
+        }
+        else{
+            myLibrary[i].read = false
+        }
+        console.log(myLibrary[i].read)
+        console.log(myLibrary)
+    }
+}
+
 function addLibrary(){
     for (let i = 0; i < myLibrary.length; i++){
-            let myArray = Object.values(myLibrary[i]) 
-            book.innerHTML = "<div class='book-info'>" + myArray + "</div>" + "<button class='delete-button' data-id=" + [i] + ">Delete</button>"
+            book.innerHTML = 
+            "<div class='book-info'>Title: " + myLibrary[i].title + "</div>" 
+            + "<div class='book-info'>Author: " + myLibrary[i].author + "</div>" 
+            + "<div class='book-info'>Amount of pages: " + myLibrary[i].pages + "</div>" 
+            + "<div class='book-info'>Read Status: " + "<input type='checkbox' checked class='status-box' onclick='updateReadStatus()'>" + "</div>" 
+            + "<button class='delete-button' data-id=" + [i] + ">Delete</button>"
             library.appendChild(book.cloneNode(book))
         }
 }
