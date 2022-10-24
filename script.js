@@ -18,16 +18,26 @@ refresh.addEventListener("click", function(){
 
 const newBook = document.getElementById("new-book")
 newBook.addEventListener("click", function(){
-    addBookToLibrary()
+    openForm()
 })
 
+const addBook = document.getElementById("addBook")
+addBook.addEventListener("click", e => {
+    addBookToLibrary()
+    bookForm.reset()
+    
+})
 
 function addBookToLibrary(){
-    //gets user prompt and adds book to array
+    let title = document.getElementById("title").value
+    let author = document.getElementById("author").value
+    let pages = document.getElementById("pages").value
+    let read = document.getElementById("read-status").checked
     let newBook = new Book(
-        prompt("Title:"),
-        prompt("Author:"),
-        prompt("Pages:"),
+        title,
+        author,
+        pages,
+        read,
     )
     myLibrary.push(newBook)
     refreshLibrary()
@@ -88,26 +98,24 @@ function updateReadStatus(){
         }
     }
 }
-const openButton = document.getElementById("openForm")
-openButton.addEventListener("click", e =>{
-    openForm()
-})
 
 const closeButton = document.getElementById("closeForm")
 closeButton.addEventListener("click", e =>{
     closeForm()
 })
 
+const bookForm = document.getElementById("bookForm")
 const libraryBody = document.getElementById("body")
+
 function openForm() {
-    document.getElementById("bookForm").style.display = "flex";
+    bookForm.style.display = "flex";
     document.getElementById("formContainer").style.zIndex = "0"
     libraryBody.style.opacity = "0.1"
 
 }
   
 function closeForm() {
-    document.getElementById("bookForm").style.display = "none";
+    bookForm.style.display = "none";
     document.getElementById("formContainer").style.zIndex = "-1"
     libraryBody.style.opacity = "1"
 }
