@@ -9,18 +9,33 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Odin Library</h1>
-    </header>
-    <main>
-        <h2 id="library-header">Books</h2>
-        <div id="library"></div>
-        
-        <div id="button-container">
-            <button id="new-book">New Book</button>
-            <button id="refresh">Refresh</button>
-        </div>
-        
-    </main>
+    <div id="body">
+        <header>
+            <h1>Odin Library</h1>
+        </header>
+        <main>
+            <h2 id="library-header">Books</h2>
+            <div id="library"></div>
+            
+            <div id="button-container">
+                <button id="new-book">New Book</button>
+                <button id="refresh">Refresh</button>
+            </div>
+        </main>
+    </div>
+    <button id="openForm">Open form</button>
+    <div id="formContainer">
+        <form id="bookForm" action="">
+            <label for="Title">Title</label>
+            <input type="text">
+            <label for="Author">Author</label>
+            <input type="text">
+            <label for="Pages">Pages</label>
+            <input type="number">
+            <label for="Read">Read Status</label>
+            <input type="checkbox">
+            <button id="closeForm">Close form</button>
+        </form>
+    </div>
 </body>
 </html>

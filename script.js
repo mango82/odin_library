@@ -88,3 +88,26 @@ function updateReadStatus(){
         }
     }
 }
+const openButton = document.getElementById("openForm")
+openButton.addEventListener("click", e =>{
+    openForm()
+})
+
+const closeButton = document.getElementById("closeForm")
+closeButton.addEventListener("click", e =>{
+    closeForm()
+})
+
+const libraryBody = document.getElementById("body")
+function openForm() {
+    document.getElementById("bookForm").style.display = "flex";
+    document.getElementById("formContainer").style.zIndex = "0"
+    libraryBody.style.opacity = "0.1"
+
+}
+  
+function closeForm() {
+    document.getElementById("bookForm").style.display = "none";
+    document.getElementById("formContainer").style.zIndex = "-1"
+    libraryBody.style.opacity = "1"
+}
